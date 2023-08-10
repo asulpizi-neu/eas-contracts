@@ -16,6 +16,7 @@ interface EnvOptions {
   ETHEREUM_SEPOLIA_PROVIDER_URL?: string;
   ETHEREUM_OPTIMISM_GOERLI_PROVIDER_URL?: string;
   ETHEREUM_BASE_GOERLI_PROVIDER_URL?: string;
+  ETHEREUM_ZORA_GOERLI_PROVIDER_URL?: string;
   ETHERSCAN_API_KEY?: string;
   PROFILE?: boolean;
 }
@@ -27,6 +28,7 @@ const {
   ETHEREUM_SEPOLIA_PROVIDER_URL = '',
   ETHEREUM_OPTIMISM_GOERLI_PROVIDER_URL = '',
   ETHEREUM_BASE_GOERLI_PROVIDER_URL = '',
+  ETHEREUM_ZORA_GOERLI_PROVIDER_URL = '',
   ETHERSCAN_API_KEY,
   PROFILE: isProfiling
 }: EnvOptions = process.env as any as EnvOptions;
@@ -36,7 +38,7 @@ const mochaOptions = (): MochaOptions => {
   let grep;
   let reporter;
 
-  if (isProfiling) {
+  if (isProfiling) { 
     timeout = 0;
     reporter = 'mocha-silent-reporter';
   }
@@ -94,6 +96,12 @@ const config: HardhatUserConfig = {
     [DeploymentNetwork.BaseGoerli]: {
       chainId: 84531,
       url: ETHEREUM_BASE_GOERLI_PROVIDER_URL,
+      saveDeployments: true,
+      live: true
+    },
+    [DeploymentNetwork.ZoraGoerli]: {
+      chainId: 999,
+      url: ETHEREUM_ZORA_GOERLI_PROVIDER_URL,
       saveDeployments: true,
       live: true
     }

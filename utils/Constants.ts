@@ -1,5 +1,8 @@
 import { ZeroAddress } from 'ethers';
 
+
+
+
 export enum DeploymentNetwork {
   Mainnet = 'mainnet',
   ArbitrumOne = 'arbitrum-one',
@@ -7,7 +10,9 @@ export enum DeploymentNetwork {
   Sepolia = 'sepolia',
   OptimismGoerli = 'optimism-goerli',
   BaseGoerli = 'base-goerli',
-  Hardhat = 'hardhat'
+  Hardhat = 'hardhat',
+  Zora = 'Zora',
+  ZoraGoerli = 'ZoraGoerli'
 }
 
 export const ZERO_ADDRESS = ZeroAddress;
